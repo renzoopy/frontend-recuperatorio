@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Lista de Categorías</h2>
+    <div class="container" style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; margin-bottom: 20px;">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar categorías..." class="form-control mb-3">
+        <button (click)="agregarCategoria()" class="btn btn-primary">Agregar Categoría</button>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="width: 10%;">ID</th>
+          <th style="width: 50%;">Nombre</th>
+          <th style="width: 40%;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let categoria of filteredCategorias" class="row">
+          <td>{{ categoria.idCategoria }}</td>
+          <td>{{ categoria.nombre }}</td>
+          <td>
+            <button (click)="editarCategoria(categoria)" class="btn btn-warning">Editar</button>
+            <button (click)="eliminarCategoria(categoria.id)" class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

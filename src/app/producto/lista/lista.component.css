@@ -1,0 +1,49 @@
+h2{
+    color: #e4e4e4;
+}
+
+button{
+    color: #e4e4e4;
+    background-color: #2f2f2f;
+}
+
+label{
+    color: #e4e4e4;
+}
+
+input{
+    color: #e4e4e4;
+    background-color: #2f2f2f;
+}
+
+.container{
+    margin-right: 50px;
+    margin-left: 50px;
+    color: #e4e4e4;
+}
+
+.table-striped {
+    margin: 25px auto;
+    border-collapse: collapse;
+    width: 75%;
+}
+
+.table-striped th,
+.table-striped td {
+    border: 1px solid #2f2f2f;
+    padding: 8px;
+    text-align: left;
+}
+
+.table-striped thead {
+    background-color: #2f2f2f;
+}
+
+.table-striped th {
+    font-weight: bold;
+}
+
+.row:hover{
+    background-color: #383838;
+    cursor: pointer;
+}

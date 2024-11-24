@@ -1,0 +1,23 @@
+<div class="container" *ngIf="venta">
+  <h2>Detalle de la Venta</h2>
+  <h4>Fecha: {{ venta.fecha }}</h4>
+  <h4>Total: {{ venta.total }}</h4>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ getNombreProducto(producto.idProducto) }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.cantidad }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="router.navigate(['/ventas/lista'])" class="btn btn-secondary">Volver</button>
+</div>

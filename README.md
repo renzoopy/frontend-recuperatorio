@@ -1,27 +1,48 @@
-# CarritoAngular
+# Recuperatorio - Carrito de Compras WEB
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+## Descripción
 
-## Development server
+Este proyecto es una aplicación frontend desarrollada con Angular para gestionar un carrito de compras. Permite la administración de categorías, productos, clientes y ventas. Incluye funcionalidades como búsqueda de productos, gestión del carrito de compras, creación de órdenes de venta y registro/verificación de clientes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Requisitos
 
-## Code scaffolding
+- Node.js y npm instalados
+- Angular CLI instalado `npm install -g @angular/cli`
+- json-server npm `npm install -g json-server`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Entorno de desarrollo
 
-## Build
+1. Crea un archivo db.json en la raíz del proyecto:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   {
+   "categorias": [],
+   "productos": [],
+   "clientes": [],
+   "ventas": []
+   }
+   ```
 
-## Running unit tests
+2. Instala las dependencias del proyecto:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   npm install
+   ```
 
-## Running end-to-end tests
+3. Inicia el servidor json-server:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   json-server --watch db.json --port 3000
+   ```
 
-## Further help
+4. Inicia el servidor de desarrollo de Angular:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```bash
+   ng serve
+   ```
+
+5. Abre la aplicación en tu navegador:
+
+   ```bash
+   http://localhost:4200
+   ```

@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Lista de Productos</h2>
+    <div class="container" style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; margin-bottom: 20px;">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar productos..." class="form-control mb-3">
+        <button (click)="agregarProducto()" class="btn btn-primary">Agregar Producto</button>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="width: 10%;">ID</th>
+          <th style="width: 20%;">Nombre</th>
+          <th style="width: 20%;">Categoría</th>
+          <th style="width: 10%;">Precio</th>
+          <th style="width: 40%;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of filteredProductos" class="row">
+          <td>{{ producto.idProducto }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ getCategoriaNombre(producto.idCategoria) }}</td>
+          <td>{{ producto.precio }}</td>
+          <td>
+            <button (click)="editarProducto(producto)" class="btn btn-warning">Editar</button>
+            <button (click)="eliminarProducto(producto.id)" class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,67 @@
+h2{
+  color: #e4e4e4;
+}
+
+h3{
+  color: #e4e4e4;
+}
+
+h4{
+  color: #e4e4e4;
+}
+
+input{
+  color: #e4e4e4;
+  background-color: #2f2f2f;
+}
+
+button{
+  color: #e4e4e4;
+  background-color: #2f2f2f;
+}
+
+span{
+  color: #e4e4e4;
+}
+
+label{
+  color: #e4e4e4;
+}
+
+.producto-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cantidad-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cantidad-controls button {
+    margin: 0 5px;
+}
+
+.carrito-container {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #2f2f2f;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cantidad-controls button {
+  margin: 0 5px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}

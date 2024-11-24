@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Lista de Ventas</h2>
+
+  <div class="container" style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; margin-bottom: 20px;">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar ventas..." class="form-control mb-3">
+      <input type="date" [(ngModel)]="selectedDate" class="form-control mb-3">
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 20%;">Fecha</th>
+        <th style="width: 20%;">Total</th>
+        <th style="width: 50%;">Cliente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let venta of filteredVentas" (click)="verDetalles(venta)" class="venta-row">
+        <td>{{ venta.id }}</td>
+        <td>{{ venta.fecha }}</td>
+        <td>{{ venta.total }}</td>
+        <td>{{ getCliente(venta.idCliente) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
