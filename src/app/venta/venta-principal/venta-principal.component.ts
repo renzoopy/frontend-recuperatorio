@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ClienteService } from '../../cliente/cliente.service';
 import { VentaService } from '../venta.service';
+import { CategoriaService } from '../../categoria/categoria.service';
+import { Categoria } from '../../categoria/categoria.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,6 +18,7 @@ import { Router } from '@angular/router';
 })
 export class VentaPrincipalComponent implements OnInit {
   productos: Producto[] = [];
+  categorias: Categoria[] = [];
   carrito: { [idProducto: number]: { cantidad: number, precio: number } } = {};
   searchTerm: string = ''; 
   mostrarCarrito: boolean = false;
@@ -25,16 +28,24 @@ export class VentaPrincipalComponent implements OnInit {
   clienteExistente: boolean = false;
   mostrarFormularioCliente: boolean = false; 
 
-  constructor(private productoService: ProductoService, private clienteService: ClienteService, private ventaService: VentaService, public router: Router) {}
+  constructor(private productoService: ProductoService, private categoriaService: CategoriaService, private clienteService: ClienteService, private ventaService: VentaService, public router: Router) {}
 
   ngOnInit() {
     this.loadProductos();
+    this.loadCategorias();
   }
 
   loadProductos() {
     this.productoService.getProductos().subscribe({
       next: (data) => this.productos = data,
       error: (error) => console.error('Error fetching productos', error)
+    });
+  }
+
+  loadCategorias() {
+    this.categoriaService.getCategorias().subscribe({
+      next: (data) => this.categorias = data,
+      error: (error) => console.error('Error fetching categorias', error)
     });
   }
 
@@ -63,11 +74,14 @@ export class VentaPrincipalComponent implements OnInit {
     if (!this.searchTerm) {
       return this.productos;
     }
-    return this.productos.filter(producto =>
-      producto.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
-  }
+    return this.productos.filter(producto => {
+      const matchNombre = producto.nombre.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const categoria = this.categorias.find(cat => cat.idCategoria === producto.idCategoria);
+      const matchCategoria = categoria ? categoria.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()) : false;
 
+      return matchNombre || matchCategoria;
+    });
+  }
 
   /// CARRITO
   verCarrito() {

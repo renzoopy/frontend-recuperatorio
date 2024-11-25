@@ -2,7 +2,9 @@
 
 ## Descripción
 
-Este proyecto es una aplicación frontend desarrollada con Angular para gestionar un carrito de compras. Permite la administración de categorías, productos, clientes y ventas. Incluye funcionalidades como búsqueda de productos, gestión del carrito de compras, creación de órdenes de venta y registro/verificación de clientes.
+Este proyecto es una aplicación frontend desarrollada con Angular para gestionar un carrito de compras.
+Permite la administración de categorías, productos, clientes y ventas. Incluye funcionalidades como búsqueda de productos,
+gestión del carrito de compras, creación de órdenes de venta y registro/verificación de clientes.
 
 ## Requisitos
 
