@@ -4,14 +4,22 @@ h2{
 
 label{
     color: #e4e4e4;
+    margin-right: 20px;
 }
 
 button{
     color: #e4e4e4;
     background-color: #2f2f2f;
+    margin: 20px 20px auto;
 }
 
 input{
     color: #e4e4e4;
     background-color: #2f2f2f;
+}
+
+.container{
+    margin-right: 50px;
+    margin-left: 50px;
+    color: #e4e4e4;
 }

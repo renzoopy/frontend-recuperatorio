@@ -5,10 +5,12 @@ h2{
 button{
     color: #e4e4e4;
     background-color: #2f2f2f;
+    margin: 20px 20px auto;
 }
 
 label{
     color: #e4e4e4;
+    margin-right: 20px;
 }
 
 input{
@@ -19,4 +21,32 @@ input{
 select{
     color: #e4e4e4;
     background-color: #2f2f2f;
+}
+
+.container{
+    margin-right: 50px;
+    margin-left: 50px;
+    color: #e4e4e4;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin: 15px auto;
+}
+
+.form-group label {
+    width: 100px;
+}
+
+.form-group select {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 600px;
+}
+
+.form-group input {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 600px;
 }
