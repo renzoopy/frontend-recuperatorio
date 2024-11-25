@@ -169,34 +169,40 @@ export class VentaPrincipalComponent implements OnInit {
   
     console.log('Cliente antes de guardar:', { ci: this.ci, nombre: this.nombre, apellido: this.apellido });
   
-    const clienteToSave = {
-      ci: this.ci,
-      nombre: this.nombre,
-      apellido: this.apellido
-    };
+    this.clienteService.getClientePorCi(this.ci).subscribe(clienteExistente => {
+      if (clienteExistente) {
+        // Si el cliente ya existe, usa su idCliente
+        this.crearVenta(clienteExistente.idCliente);
+      } else {
+        // Si el cliente no existe, créalo
+        this.clienteService.getClientes().subscribe({
+          next: (client_list) => {
+            const clientCount = client_list.length;
+            const newIdCliente = clientCount + 1;
   
-    this.clienteService.getClientes().subscribe({
-      next: (client_list) => {
-        const clientCount = client_list.length;
-        const newIdCliente = clientCount + 1;
+            const clienteToSave = {
+              idCliente: newIdCliente,
+              id: newIdCliente.toString(),
+              ci: this.ci,
+              nombre: this.nombre,
+              apellido: this.apellido
+            };
   
-        this.clienteService.addCliente({
-          ...clienteToSave,
-          idCliente: newIdCliente,
-          id: newIdCliente.toString()
-        }).subscribe({
-          next: (newCliente) => {
-            this.crearVenta(newCliente.idCliente);
+            this.clienteService.addCliente(clienteToSave).subscribe({
+              next: (newCliente) => {
+                this.crearVenta(newCliente.idCliente);
+              },
+              error: (error) => {
+                console.error('Error al agregar cliente', error);
+                alert("Hubo un error al agregar al cliente.");
+              }
+            });
           },
           error: (error) => {
-            console.error('Error al agregar cliente', error);
-            alert("Hubo un error al agregar al cliente.");
+            console.error('Error al obtener clientes', error);
+            alert("Hubo un error al verificar el cliente.");
           }
         });
-      },
-      error: (error) => {
-        console.error('Error al obtener clientes', error);
-        alert("Hubo un error al verificar el cliente.");
       }
     });
   }
