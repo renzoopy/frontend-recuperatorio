@@ -271,4 +271,9 @@ export class VentaPrincipalComponent implements OnInit {
     this.mostrarFormularioCliente = false;
     this.mostrarCarrito = true;
   }
+
+  getCategoria(idCategoria: number): string {
+    const categoria = this.categorias.find(cat => cat.idCategoria === idCategoria);
+    return categoria ? categoria.nombre : 'Categoría desconocida';
+  }
 }

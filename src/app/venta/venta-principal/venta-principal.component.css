@@ -90,3 +90,40 @@ label{
   padding: 5px;
   margin-right: 200px;
 }
+
+.producto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.producto-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.items {
+  flex: 2;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.categoria {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap; 
+}
+
+.cantidad-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+}
+
+.cantidad-controls button {
+  margin: 0 5px;
+}

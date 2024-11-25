@@ -13,7 +13,10 @@
     </div>
 
     <div *ngFor="let producto of filteredProductos" class="producto-item">
-      <span class="items">{{ producto.nombre }} - {{ producto.precio | currency }}</span>
+      <div class="producto-info">
+        <span class="items">{{ producto.nombre }} - {{ producto.precio | currency }}</span>
+        <span class="categoria">{{ getCategoria(producto.idCategoria) }}</span>
+      </div>
       <div class="cantidad-controls">
         <button *ngIf="getCantidad(producto.idProducto) > 0" (click)="cambiarCantidad(producto.idProducto, -1)">-</button>
         <span *ngIf="getCantidad(producto.idProducto) > 0">{{ getCantidad(producto.idProducto) }}</span>
