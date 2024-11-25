@@ -202,56 +202,56 @@ export class VentaPrincipalComponent implements OnInit {
   }
   
   crearVenta(idCliente: number) {
-  const formattedDate = this.formatFecha(new Date());
+    const formattedDate = this.formatFecha(new Date());
   
-  console.log('Venta antes de guardar:', {
-    idCliente,
-    total: this.calcularTotal(),
-    detalleVenta: Object.entries(this.carrito).map(([idProducto, item]) => ({
-      idProducto: +idProducto,
-      cantidad: item.cantidad,
-      precio: item.precio
-    }))
-  });
+    console.log('Venta antes de guardar:', {
+      idCliente,
+      total: this.calcularTotal(),
+      detalleVenta: Object.entries(this.carrito).map(([idProducto, item]) => ({
+        idProducto: +idProducto,
+        cantidad: item.cantidad,
+        precio: item.precio
+      }))
+    });
 
-  this.ventaService.getVentas().subscribe({
-    next: (ventas) => {
-      const ventasCount = ventas.length;
-      const newIdVenta = ventasCount + 1;
+    this.ventaService.getVentas().subscribe({
+      next: (ventas) => {
+        const ventasCount = ventas.length;
+        const newIdVenta = ventasCount + 1;
 
-      const ventaToSave = {
-        id: newIdVenta.toString(),
-        idVenta: newIdVenta,
-        fecha: formattedDate,
-        idCliente: idCliente,
-        total: this.calcularTotal(),
-        detalleVenta: Object.entries(this.carrito).map(([idProducto, item]) => ({
-          idDetalleVenta: Date.now(),
-          idProducto: +idProducto,
-          cantidad: item.cantidad,
-          precio: item.precio
-        }))
-      };
+        const ventaToSave = {
+          id: newIdVenta.toString(),
+          idVenta: newIdVenta,
+          fecha: formattedDate,
+          idCliente: idCliente,
+          total: this.calcularTotal(),
+          detalleVenta: Object.entries(this.carrito).map(([idProducto, item]) => ({
+            idDetalleVenta: Date.now(),
+            idProducto: +idProducto,
+            cantidad: item.cantidad,
+            precio: item.precio
+          }))
+        };
 
-      this.ventaService.addVenta(ventaToSave).subscribe({
-        next: () => {
-          alert("Pedido confirmado con éxito!");
-          this.carrito = {};
-          this.mostrarFormularioCliente = false;
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          console.error('Error creando la venta', error);
-          alert("Hubo un error al confirmar el pedido.");
-        }
+        this.ventaService.addVenta(ventaToSave).subscribe({
+          next: () => {
+            alert("Pedido confirmado con éxito!");
+            this.carrito = {};
+            this.mostrarFormularioCliente = false;
+            this.router.navigate(['/']);
+          },
+          error: (error) => {
+            console.error('Error creando la venta', error);
+            alert("Hubo un error al confirmar el pedido.");
+          }
+        });
+      },
+      error: (error) => {
+        console.error('Error obteniendo las ventas', error);
+        alert("Hubo un error al obtener las ventas existentes.");
+      }
       });
-    },
-    error: (error) => {
-      console.error('Error obteniendo las ventas', error);
-      alert("Hubo un error al obtener las ventas existentes.");
     }
-  });
-}
 
   formatFecha(date: Date): string {
     const day = String(date.getDate()).padStart(2, '0');
@@ -259,5 +259,10 @@ export class VentaPrincipalComponent implements OnInit {
     const year = date.getFullYear();
   
     return `${day}/${month}/${year}`;
+  }
+
+  volverAlCarrito() {
+    this.mostrarFormularioCliente = false;
+    this.mostrarCarrito = true;
   }
 }

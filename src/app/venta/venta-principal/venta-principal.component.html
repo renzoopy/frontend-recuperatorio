@@ -24,8 +24,10 @@
 
   <!-- Sección del carrito -->
   <div *ngIf="mostrarCarrito && !mostrarFormularioCliente" class="carrito-container">
-    <h3>Carrito de Compras</h3>
-    <button (click)="ocultarCarrito()" class="btn btn-primary mt-3">Volver</button>
+    <button (click)="ocultarCarrito()" class="btn btn-primary mt-3" style="margin-bottom: 15px;">Volver</button>
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h2>Carrito de Compras</h2>
+    </div>
     <div *ngFor="let item of carritoArray" class="carrito-item">
       <span>{{ item.nombre }} - {{ item.precio | currency }}</span>
       <div class="cantidad-controls">
@@ -34,27 +36,34 @@
         <button (click)="cambiarCantidadCarrito(item.idProducto, 1)">+</button>
       </div>
     </div>
-    <h4>Total: {{ calcularTotal() | currency }}</h4>
-    <button (click)="confirmarPedido()" class="btn btn-success mt-3">Confirmar Pedido</button>
+    <h2 style="margin-top: 30px;">Total: {{ calcularTotal() | currency }}</h2>
+    <div style="text-align: center;">
+      <button (click)="confirmarPedido()" class="btn btn-success mt-3">Confirmar Pedido</button>
+    </div>
   </div>
 
   <!-- Sección del formulario de cliente -->
   <div *ngIf="mostrarFormularioCliente" class="container">
-    <h2>Verificar Datos del Cliente</h2>
+    <button (click)="volverAlCarrito()" class="btn btn-secondary mt-3">Volver</button>
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h2>Verificar Datos del Cliente</h2>
+    </div>
     <form (ngSubmit)="finalizarPedido()">
       <div class="form-group">
-        <label for="ci">Cédula</label>
+        <label for="ci" style="margin-right: 10px;">Cédula</label>
         <input type="text" id="ci" [(ngModel)]="ci" name="ci" class="form-control" (input)="verificarClientePorCi()" required>
       </div>
       <div class="form-group">
-        <label for="nombre">Nombre</label>
+        <label for="nombre" style="margin-right: 10px;">Nombre</label>
         <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" class="form-control" [readonly]="clienteExistente" required>
       </div>
       <div class="form-group">
-        <label for="apellido">Apellido</label>
+        <label for="apellido" style="margin-right: 10px;">Apellido</label>
         <input type="text" id="apellido" [(ngModel)]="apellido" name="apellido" class="form-control" [readonly]="clienteExistente" required>
       </div>
-      <button type="submit" class="btn btn-success mt-3">Finalizar Pedido</button>
+      <div style="text-align: center;">
+        <button type="submit" class="btn btn-success mt-3" style="margin-top: 30px;">Finalizar Pedido</button>
+      </div>
     </form>
   </div>
 </div>
