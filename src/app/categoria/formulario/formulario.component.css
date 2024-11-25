@@ -23,3 +23,25 @@ input{
     margin-left: 50px;
     color: #e4e4e4;
 }
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin: 15px auto;
+}
+
+.form-group label {
+    width: 100px;
+}
+
+.form-group select {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 1100px;
+}
+
+.form-group input {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 1100px;
+}
